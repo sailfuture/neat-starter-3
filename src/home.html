@@ -1,0 +1,50 @@
+---
+layout: default
+title: Neat Starter
+path: home
+---
+
+<div class="relative z-10" aria-labelledby="slide-over-title" role="dialog" aria-modal="true">
+  <!--
+    Background backdrop, show/hide based on slide-over state.
+
+    Entering: "ease-in-out duration-500"
+      From: "opacity-0"
+      To: "opacity-100"
+    Leaving: "ease-in-out duration-500"
+      From: "opacity-100"
+      To: "opacity-0"
+  -->
+
+  <div id='map' class="-z-10 fixed mt-16"></div>
+
+<script>
+  L.mapbox.accessToken = 'pk.eyJ1IjoiaHVudGVycnRob21wc29uIiwiYSI6ImNsbXQ2MDE2YjAxZHkyamxmcHdlenR5ZDQifQ.6VJnQFXp3-P7jPkwcwdFjA';
+  var map = L.mapbox.map('map')
+      .setView([40, -74.50], 9)
+      .addLayer(L.mapbox.styleLayer('mapbox://styles/mapbox/streets-v11'));
+
+      L.mapbox.featureLayer({
+    // this feature is in the GeoJSON format: see geojson.org
+    // for the full specification
+    type: 'Feature',
+    geometry: {
+        type: 'Point',
+        // coordinates here are in longitude, latitude order because
+        // x, y is the standard for GeoJSON and many formats
+        coordinates: [
+          -77.03221142292,
+          38.913371603574
+        ]
+    },
+    properties: {
+        title: 'Peregrine Espresso',
+        description: '1718 14th St NW, Washington, DC',
+        // one can customize markers by adding simplestyle properties
+        // https://www.mapbox.com/guides/an-open-platform/#simplestyle
+        'marker-size': 'large',
+        'marker-color': '#BE9A6B',
+        'marker-symbol': 'cafe'
+    }
+}).addTo(map);
+  </script>

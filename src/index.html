@@ -15,8 +15,10 @@ path: home
       From: "opacity-100"
       To: "opacity-0"
   -->
-  <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
 
+  <div class="fixed mt-16 inset-0 bg-gray-500 bg-opacity-10 transition-opacity">
+  </div>
+  <div id='map' class="-z-10 fixed mt-16"></div>
   <div class="fixed inset-0 overflow-hidden">
     <div class="absolute inset-0 overflow-hidden">
       <div class="pointer-events-none fixed inset-y-0 left-0 flex max-w-full pr-10 sm:mt-16 md:mt-16 lg:mt-16">
@@ -76,12 +78,14 @@ path: home
           </div>
         </div>
         <h3 class="mt-3 text-lg font-semibold leading-6 text-white">
-          <a href="#">
+          <a href="/blogpostexpanded/">
             <span class="absolute inset-0"></span>
             Women at the Helm: Inspiring Stories of Female Caribbean Sailors
           </a>
         </h3>
 </article>
+
+
 <article class="relative isolate flex flex-col justify-end overflow-hidden rounded-2xl bg-gray-900 px-8 pb-8 pt-40 lg:pt-40">
         <img src="https://res.cloudinary.com/dbhwzxw0k/image/upload/v1698765649/092923_WhateverItTakes_5.jpg" alt="" class="absolute inset-0 -z-10 h-full w-full object-cover">
         <div class="absolute inset-0 -z-10 bg-gradient-to-t from-gray-900 via-gray-900/40"></div>
@@ -100,12 +104,14 @@ path: home
           </div>
         </div>
         <h3 class="mt-3 text-lg font-semibold leading-6 text-white">
-          <a href="#">
+          <a href="/story1">
             <span class="absolute inset-0"></span>
             Charting Unknown Waters: Navigating the Caribbean's Hidden Gems
           </a>
         </h3>
 </article>
+
+
 <article class="relative isolate flex flex-col justify-end overflow-hidden rounded-2xl bg-gray-900 px-8 pb-8 pt-40 lg:pt-40">
         <img src="https://res.cloudinary.com/dbhwzxw0k/image/upload/v1698765650/092923_WhateverItTakes_60.jpg" alt="" class="absolute inset-0 -z-10 h-full w-full object-cover">
         <div class="absolute inset-0 -z-10 bg-gradient-to-t from-gray-900 via-gray-900/40"></div>
@@ -124,12 +130,14 @@ path: home
           </div>
         </div>
         <h3 class="mt-3 text-lg font-semibold leading-6 text-white">
-          <a href="#">
+          <a href="/story2">
             <span class="absolute inset-0"></span>
             The Diary of a Young Sailor: My First Voyage to the Caribbean
           </a>
         </h3>
 </article>
+
+
 <article class="relative isolate flex flex-col justify-end overflow-hidden rounded-2xl bg-gray-900 px-8 pb-8 pt-40 lg:pt-40">
         <img src="https://res.cloudinary.com/dbhwzxw0k/image/upload/v1698765648/092923_WhateverItTakes_69.jpg" alt="" class="absolute inset-0 -z-10 h-full w-full object-cover">
         <div class="absolute inset-0 -z-10 bg-gradient-to-t from-gray-900 via-gray-900/40"></div>
@@ -148,12 +156,14 @@ path: home
           </div>
         </div>
         <h3 class="mt-3 text-lg font-semibold leading-6 text-white">
-          <a href="#">
+          <a href="/story3">
             <span class="absolute inset-0"></span>
             Compass Points and Compassion: Making Friends in Faraway Ports
           </a>
         </h3>
 </article>
+
+
 <article class="relative isolate flex flex-col justify-end overflow-hidden rounded-2xl bg-gray-900 px-8 pb-8 pt-40 lg:pt-40">
         <img src="https://res.cloudinary.com/dbhwzxw0k/image/upload/v1698765650/092923_WhateverItTakes_2.jpg" alt="" class="absolute inset-0 -z-10 h-full w-full object-cover">
         <div class="absolute inset-0 -z-10 bg-gradient-to-t from-gray-900 via-gray-900/40"></div>
@@ -172,7 +182,7 @@ path: home
           </div>
         </div>
         <h3 class="mt-3 text-lg font-semibold leading-6 text-white">
-          <a href="#">
+          <a href="/story3">
             <span class="absolute inset-0"></span>
             History Comes Alive: Meeting Caribbean Legends
           </a>
@@ -188,7 +198,41 @@ path: home
             </div>
           </form>
         </div>
+
+
       </div>
     </div>
   </div>
 </div>
+
+
+<script>
+  L.mapbox.accessToken = 'pk.eyJ1IjoiaHVudGVycnRob21wc29uIiwiYSI6ImNsbXQ2MDE2YjAxZHkyamxmcHdlenR5ZDQifQ.6VJnQFXp3-P7jPkwcwdFjA';
+  var map = L.mapbox.map('map')
+      .setView([40, -74.50], 9)
+      .addLayer(L.mapbox.styleLayer('mapbox://styles/mapbox/streets-v11'));
+
+      L.mapbox.featureLayer({
+    // this feature is in the GeoJSON format: see geojson.org
+    // for the full specification
+    type: 'Feature',
+    geometry: {
+        type: 'Point',
+        // coordinates here are in longitude, latitude order because
+        // x, y is the standard for GeoJSON and many formats
+        coordinates: [
+          -77.03221142292,
+          38.913371603574
+        ]
+    },
+    properties: {
+        title: 'Peregrine Espresso',
+        description: '1718 14th St NW, Washington, DC',
+        // one can customize markers by adding simplestyle properties
+        // https://www.mapbox.com/guides/an-open-platform/#simplestyle
+        'marker-size': 'large',
+        'marker-color': '#BE9A6B',
+        'marker-symbol': 'cafe'
+    }
+}).addTo(map);
+  </script>

@@ -15,6 +15,31 @@
     {% if prism == true %}
       <link rel="stylesheet" type="text/css" href="/static/css/prism-tomorrow.css">
     {% endif %}
+
+    <script src='https://api.mapbox.com/mapbox.js/v3.3.1/mapbox.js'></script>
+<link href='https://api.mapbox.com/mapbox.js/v3.3.1/mapbox.css' rel='stylesheet' />
+<style>
+  body { margin:0; padding:0; }
+  #map {top:0; bottom:0; width:100%; }
+
+@-webkit-keyframes pulse {
+	from { stroke-width: 15; stroke-opacity: 1; }
+	to { stroke-width: 50; stroke-opacity: 0; }
+}
+@keyframes pulse {
+	from { stroke-width: 15; stroke-opacity: 1; }
+	to { stroke-width: 50; stroke-opacity: 0; }
+}
+
+.leaflet-marker-icon.selectedMarker{
+	-webkit-animation: pulse 2s ease-out;
+	animation: pulse 2s ease-out;
+	-webkit-animation-iteration-count: infinite;
+	animation-iteration-count: infinite;
+}
+
+</style>
+
   </head>
   <body>
     {% include "./partials/navbar.html" %}

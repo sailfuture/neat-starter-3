@@ -5,8 +5,17 @@ layout: default
 
 <div class="container max-w-3xl mt-6 px-6">
 
+    <div id='map' class="fixed"></div>
+
     <h1 class="font-bold text-5xl">{{title}}</h1>
 
     {{ content | safe }}
 
 </div>
+
+<script>
+    L.mapbox.accessToken = 'pk.eyJ1IjoiaHVudGVycnRob21wc29uIiwiYSI6ImNsbXQ2MDE2YjAxZHkyamxmcHdlenR5ZDQifQ.6VJnQFXp3-P7jPkwcwdFjA';
+    var map = L.mapbox.map('map')
+        .setView([40, -74.50], 9)
+        .addLayer(L.mapbox.styleLayer('mapbox://styles/mapbox/streets-v11'));
+    </script>
